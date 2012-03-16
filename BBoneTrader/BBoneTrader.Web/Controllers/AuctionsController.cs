@@ -1,18 +1,13 @@
 ﻿using System.Collections.Generic;
-using System.Web.Mvc;
+using System.Web.Http;
 
 namespace BBoneTrader.Web.Controllers
 {
-    public class HomeController : Controller
+    public class AuctionsController : ApiController
     {
-        public ActionResult Index()
+        public IList<Temp> Get()
         {
-            return View();
-        }
-
-        public ActionResult Auctions()
-        {
-            return Json(new List<Temp>()
+            return new List<Temp>()
                                       {
                                           new Temp()
                                               {
@@ -26,14 +21,7 @@ namespace BBoneTrader.Web.Controllers
                                                   Title = "aasdasdsd",
                                                   Description = "asdsada ello"
                                               }
-                                      }, JsonRequestBehavior.AllowGet);
+                                      };
         }
-    }
-
-    public class Temp
-    {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
     }
 }

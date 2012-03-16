@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="IronRuby">
       <HintPath>..\packages\IronRuby.1.1.3\Lib\IronRuby.dll</HintPath>
     </Reference>
@@ -157,6 +160,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AuctionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -166,8 +170,10 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Public\javascripts\auction\BBoneTrader.AuctionApp.js" />
     <Content Include="Public\javascripts\BBoneTrader.js" />
     <Content Include="Public\css\style.css" />
+    <Content Include="Public\javascripts\BBoneTrader.views.js" />
     <Content Include="Public\javascripts\vendor\backbone.marionette.js" />
     <Content Include="Public\javascripts\vendor\backbone.modelbinding.js" />
     <Content Include="Public\javascripts\vendor\json2.js" />
@@ -184,6 +190,9 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Public\images\" />
+    <Folder Include="Public\javascripts\admin\" />
+    <Folder Include="Public\javascripts\login\" />
+    <Folder Include="Public\javascripts\notification\" />
     <Folder Include="Public\templates\" />
   </ItemGroup>
   <ItemGroup>
