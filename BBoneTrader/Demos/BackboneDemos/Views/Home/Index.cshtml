@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>@ViewBag.Message</h2>
+<p>
+    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+</p>
+
+<div class="order-info" data-orderId="123213" data-status="open">
+    <!-- 
+        Order info... 
+        -->
+    <a class="view-details">View details</a>
+    
+    <div class="order-details">
+    </div>
+</div>
+
+<script id="order-detail-template" type="text/x-jQuery-tmpl">
+    <ul>
+        {{each OrderLines}}
+            <li>${Product} - ${Price} </li>
+        {{/each}}
+    </ul>        
+</script>
+
+
+<script>
+
+    $(".view-details").click(function () {
+        var orderInfoDiv = $(this).parent();
+        var orderId = orderInfoDiv.data("orderId");
+        var detailsDiv = $(".order-details", orderInfoDiv);
+
+        $.ajax({
+            url: "/order/orderDetail",
+            type: "GET",
+            data: orderId,
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            success: function (orderDetail) {
+                $.tmpl("#order-detail-template", orderDetail).appendTo(detailsDiv);
+            }
+        });
+    });
+    
+</script>

@@ -165,18 +165,29 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Auction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Public\javascripts\auction\BBoneTrader.AuctionApp.js" />
-    <Content Include="Public\javascripts\BBoneTrader.js" />
+    <Content Include="Public\css\bootstrap-responsive.css" />
+    <Content Include="Public\css\bootstrap-responsive.min.css" />
+    <Content Include="Public\css\bootstrap.css" />
+    <Content Include="Public\css\bootstrap.min.css" />
     <Content Include="Public\css\style.css" />
-    <Content Include="Public\javascripts\BBoneTrader.views.js" />
-    <Content Include="Public\javascripts\vendor\backbone.marionette.js" />
-    <Content Include="Public\javascripts\vendor\backbone.modelbinding.js" />
-    <Content Include="Public\javascripts\vendor\json2.js" />
+    <Content Include="Public\img\glyphicons-halflings-white.png" />
+    <Content Include="Public\img\glyphicons-halflings.png" />
+    <Content Include="Public\js\AuctionList\BBoneTrader.AuctionList.js" />
+    <Content Include="Public\js\BBoneTrader.js" />
+    <Content Include="Public\js\BBoneTrader.views.js" />
+    <Content Include="Public\js\BBoneTrader.routes.js" />
+    <Content Include="Public\js\NewAuction\BBoneTrader.NewAuction.js" />
+    <Content Include="Public\js\vendor\backbone.marionette.js" />
+    <Content Include="Public\js\vendor\backbone.modelbinding.js" />
+    <Content Include="Public\js\vendor\bootstrap.js" />
+    <Content Include="Public\js\vendor\bootstrap.min.js" />
+    <Content Include="Public\js\vendor\json2.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -188,11 +199,6 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Public\images\" />
-    <Folder Include="Public\javascripts\admin\" />
-    <Folder Include="Public\javascripts\login\" />
-    <Folder Include="Public\javascripts\notification\" />
     <Folder Include="Public\templates\" />
   </ItemGroup>
   <ItemGroup>
