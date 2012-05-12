@@ -12,7 +12,7 @@ BBoneTrader.Router = function (Backbone) {
             BBoneTrader.AuctionList.show();
         },
 
-        newAuction: function () {
+        newAuction: function () {            
             BBoneTrader.NewAuction.show();
         },
 

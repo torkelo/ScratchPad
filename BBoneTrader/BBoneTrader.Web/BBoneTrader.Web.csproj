@@ -182,6 +182,7 @@
     <Content Include="Public\js\BBoneTrader.js" />
     <Content Include="Public\js\BBoneTrader.views.js" />
     <Content Include="Public\js\BBoneTrader.routes.js" />
+    <Content Include="Public\js\BBoneTrader.NavMenu.js" />
     <Content Include="Public\js\NewAuction\BBoneTrader.NewAuction.js" />
     <Content Include="Public\js\vendor\backbone.marionette.js" />
     <Content Include="Public\js\vendor\backbone.modelbinding.js" />

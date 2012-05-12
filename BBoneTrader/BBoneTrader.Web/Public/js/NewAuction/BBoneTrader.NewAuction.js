@@ -8,6 +8,7 @@ BBoneTrader.NewAuction = function (Backbone, $) {
 
     });
 
+
 	// public api
     var NewAuction = {};
 
@@ -15,6 +16,7 @@ BBoneTrader.NewAuction = function (Backbone, $) {
     	var view = new NewAuctionView({model: new Auction()});
         BBoneTrader.AppView.showView(view);
     };
+
 
     return NewAuction;
 

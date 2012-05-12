@@ -1,10 +1,8 @@
 ﻿
-BBoneTrader = function (Backbone, $) {
+BBoneTrader.NavMenu = function (Backbone, $) {
 
-    var BBoneTrader = {};
-    
-    var AppView = Backbone.View.extend({
-        el: $("#app-view"),
+    var NavMenuView = Backbone.View.extend({
+        el: $(".nav"),
 
         initialize: function () {
             _.bindAll(this, "showView");
