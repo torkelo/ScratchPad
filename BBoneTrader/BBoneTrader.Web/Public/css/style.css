@@ -7,6 +7,6 @@ body {
     margin-top: 10px;
 }
 
-.auction-item {
-    width: 400px;
+.auction-item, .new-auction-form {
+    width: 500px;
 }

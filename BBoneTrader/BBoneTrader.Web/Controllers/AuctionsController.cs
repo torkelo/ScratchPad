@@ -6,7 +6,7 @@ namespace BBoneTrader.Web.Controllers
 {
     public class AuctionsController : ApiController
     {
-        public IList<Auction> Get()
+        public IList<Auction> List()
         {
             return new List<Auction>()
                     {
@@ -36,5 +36,17 @@ namespace BBoneTrader.Web.Controllers
                             }
                     };
         }
+
+        public void Create(CreateAuctionCommand auction)
+        {
+
+        }
+    }
+
+    public class CreateAuctionCommand
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public int MinBid { get; set; }
     }
 }

@@ -13,18 +13,13 @@
     
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
+                <div class="container">                    
                     <a class="brand" href="#">Backbone Trader</a>
                     <div class="nav-collapse">
-                        <ul class="nav">
-                            <li class="active"><a href="javascript;">List auctions</a></li>
-                            <li><a href="javascript;">New auction</a></li>
-                            <li><a href="javascript;">Log</a></li>
+                        <ul class="nav"> 
+                            <li><a href="" data-route="auctions">Auction List</a>  
+                            <li><a href="" data-route="new">New Auction</a>
+                            <li><a href="" data-route="log">Log</a>
                         </ul>
                     </div>
                 </div>
@@ -42,23 +37,35 @@
                 <header>{{Title}}</header>
                 
                 <span class="auction-max-bix">Max bid: {{MaxBid}} SEK</span>
+
+                <button class="btn primary-btn place-bid">Place bid</button> 
             </div>
         </script>
         
         <script id="new-auction-template" type="text/html">
             <h3>New Auction</h3>
             
-            <form class="well">
-                <label>Label name</label>
-                <input type="text" class="span3" placeholder="Type something…">
-                <span class="help-block">Example block-level help text here.</span>
-                <label class="checkbox">
-                    <input type="checkbox"> Check me out
+            <form class="well new-auction-form">
 
-                </label>
-                <button type="submit" class="btn">Submit</button>
+                <label for="auction-title">Title</label>
+                <input type="text" id="auction-title" class="span5" placeholder="Title...">
+
+                <label for="auction-description">Description</label>
+                <textarea id="auction-description" placeholder="Description..." class="span5"  rows="6" />
+                
+                <label for="auction-min-bid">Min bid</label>
+                <input type="text" id="auction-min-bid" class="span2" placeholder="Min bid..">           
+                
+                
+                <button type="button" id="create-auction" class="btn btn-success pull-right">Create</button>
             </form>
 
+        </script>
+
+        <script id="menu-item-template" type="text/html">
+            <li {{#active}}class="active"{{/active}}>
+                <a href="#">{{text}}</a>
+            </li>    
         </script>
     
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"> </script>
@@ -71,6 +78,7 @@
         <script src="@Url.Content("~/public/js/BBoneTrader.routes.js")"> </script>
         <script src="@Url.Content("~/public/js/AuctionList/BBoneTrader.AuctionList.js")"> </script>
         <script src="@Url.Content("~/public/js/NewAuction/BBoneTrader.NewAuction.js")"> </script>
+        <script src="@Url.Content("~/public/js/BBoneTrader.Menu.js")"> </script>
     
     </body>
 </html>

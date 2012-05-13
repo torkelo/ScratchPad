@@ -3,16 +3,17 @@ BBoneTrader.Router = function (Backbone) {
 
     var AppRouter = Backbone.Router.extend({
         routes: {
-            "": "home",
-            "new": "newAuction",
+            "": "auction",
+            "auctions": "auctions",
+            "new": "new",
             "log": "log"
         },
 
-        home: function () {
+        auctions: function () {
             BBoneTrader.AuctionList.show();
         },
 
-        newAuction: function () {            
+        new: function () {            
             BBoneTrader.NewAuction.show();
         },
 

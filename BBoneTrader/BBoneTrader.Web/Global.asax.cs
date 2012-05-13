@@ -27,15 +27,21 @@ namespace BBoneTrader.Web
 
             routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{action}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
+            
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
+                name: "CatchAll",
+                url: "{*all}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            
+            //routes.MapRoute(
+            //    name: "Default",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            //);            
         }
 
         protected void Application_Start()

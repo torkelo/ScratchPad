@@ -5,12 +5,20 @@ BBoneTrader.AuctionList = function (Backbone, $) {
 
     var AuctionListCollection = Backbone.Collection.extend({
         model: AuctionListItem,
-        url: "/api/auctions"
+        url: "/api/auctions/list"
     });
 
     var AuctionListItemView = BBoneTrader.View.extend({
         tagName: "div",
-        template: "#auction-item-template"
+        template: "#auction-item-template",
+        events: {
+            "click .place-bid": "placeBid"
+        },
+
+        placeBid: function() {
+
+        }
+
     });
 
 
@@ -27,6 +35,7 @@ BBoneTrader.AuctionList = function (Backbone, $) {
         },
 
         render: function () {
+            $(this.el).html("<h3>Auction List</h3>");
 
             this.auctions.forEach(function (item) {
 
