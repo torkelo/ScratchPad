@@ -10,7 +10,7 @@ BBoneTrader = function (Backbone, $) {
             _.bindAll(this, "showView");
         },
 
-        showView: function (view) {
+        showView: function (view) {            
             $("#main-region").html(view.render().el);
         }
     });

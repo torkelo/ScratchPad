@@ -30,7 +30,7 @@ namespace BBoneTrader.Web
                 routeTemplate: "api/{controller}/{action}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            
+
             routes.MapRoute(
                 name: "CatchAll",
                 url: "{*all}",
@@ -50,6 +50,11 @@ namespace BBoneTrader.Web
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            var templateBundle = new DynamicFolderBundle("html", "*.html", true);
+            var context = new BundleContext(new HttpContextWrapper(Context), new BundleCollection(), "~/Public//templates");
+            templateBundle.EnumerateFiles(context);
+            BundleTable.Bundles.Add(templateBundle);
 
             BundleTable.Bundles.RegisterTemplateBundles();
 

@@ -1,3 +1,4 @@
+@using BBoneTrader.Web.Helpers
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -50,71 +51,11 @@
 
             <div id="main-region" class="row span12">               
 
-
             </div>     
             
-        </div>
+        </div>       
         
-        <script id="auction-item-template" type="text/html">
-            <div class="auction-item well">
-                <header>{{Title}}</header>
-                
-                <span class="auction-max-bix">Max bid: {{MaxBid}} SEK</span>
-
-                <button class="btn primary-btn place-bid">Place bid</button> 
-            </div>
-        </script>
-        
-        <script id="new-auction-template" type="text/html">            
-
-            <form class="form-horizontal span10 new-auction-form">
-                <fieldset>
-                    <legend>New Auction</legend>
-                    <div class="row">
-                        <div class="span10">
-                            <div class="control-group">
-                                <label for="title" class="control-label">Title:</label>
-
-                                <div class="controls">                                
-                                    <input type="text" id="title" class="span5" placeholder="..." />
-                                    <span class="help-inline"></span>
-                                </div>
-                            </div>
-
-                            <div class="control-group">
-                                <label for="description" class="control-label">Description:</label>
-
-                                <div class="controls">                                
-                                    <textarea type="text" id="description" class="span5" placeholder="..."></textarea>
-                                    <span class="help-inline"></span>
-                                </div>
-                            </div>
-
-                            <div class="control-group">
-                                <label for="minBid" class="control-label">Min bid:</label>
-
-                                <div class="controls">                                
-                                    <input type="text" id="minBid" class="span1" value="0" placeholder="..." />
-                                    <span class="help-inline"></span>
-                                </div>
-                            </div>                                                           
-                        </div>
-                    </div>
-                </fieldset>
-
-                <div class="form-actions">
-                    <button type="button" class="btn btn-success create">Create</button> &nbsp;&nbsp;
-                    <button href="" class="btn btn cancel">Cancel</button>
-                </div>                
-            </form>
-
-        </script>
-
-        <script id="menu-item-template" type="text/html">
-            <li {{#active}}class="active"{{/active}}>
-                <a href="#">{{text}}</a>
-            </li>    
-        </script>
+        @Html.RenderTemplates("~/public/templates/html")
     
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"> </script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.1/underscore-min.js"> </script>
