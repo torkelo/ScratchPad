@@ -1,3 +1,4 @@
+@using BBoneTrader.Web.Helpers
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,12 +15,27 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">                    
-                    <a class="brand" href="#">Backbone Trader</a>
+                    <a class="brand" href="">Backbone Trader</a>
                     <div class="nav-collapse">
                         <ul class="nav"> 
-                            <li><a href="" data-route="auctions">Auction List</a>  
-                            <li><a href="" data-route="new">New Auction</a>
-                            <li><a href="" data-route="log">Log</a>
+                            <li>
+                                <a href="" data-route="auctions">
+                                    <i class="icon-list icon-white"></i>
+                                    Auction List</a>
+                                </li>  
+                            </li>
+                            <li>
+                                <a href="" data-route="new">
+                                    <i class="icon-edit icon-white"></i>
+                                    New Auction
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" data-route="log">
+                                    <i class="icon-eye-open icon-white"></i>
+                                    Log
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -28,45 +44,18 @@
 
         
         <div class="container" id="app-view">
-            
-            
-        </div>
-        
-        <script id="auction-item-template" type="text/html">
-            <div class="auction-item well">
-                <header>{{Title}}</header>
-                
-                <span class="auction-max-bix">Max bid: {{MaxBid}} SEK</span>
-
-                <button class="btn primary-btn place-bid">Place bid</button> 
+            <div class="row span12">
+                <div class="alert" style="display:none">                           
+                </div>
             </div>
-        </script>
-        
-        <script id="new-auction-template" type="text/html">
-            <h3>New Auction</h3>
+
+            <div id="main-region" class="row span12">               
+
+            </div>     
             
-            <form class="well new-auction-form">
-
-                <label for="Title">Title</label>
-                <input type="text" id="Title" class="span5" placeholder="Title...">
-
-                <label for="Description">Description</label>
-                <textarea id="Description" placeholder="Description..." class="span5"  rows="6"></textarea>
-                
-                <label for="MinBid">Min bid</label>
-                <input type="text" id="MinBid" class="span2" placeholder="Min bid..">           
-                
-                
-                <button type="button" id="create-auction" class="btn btn-success pull-right">Create</button>
-            </form>
-
-        </script>
-
-        <script id="menu-item-template" type="text/html">
-            <li {{#active}}class="active"{{/active}}>
-                <a href="#">{{text}}</a>
-            </li>    
-        </script>
+        </div>       
+        
+        @Html.RenderTemplates("~/public/templates/html")
     
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"> </script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.1/underscore-min.js"> </script>
@@ -74,10 +63,12 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.4.2/mustache.min.js"> </script>
         <script src="@Url.Content("~/public/js/vendor/bootstrap.js")"> </script>
         <script src="@Url.Content("~/public/js/BBoneTrader.js")"> </script>
+        <script src="@Url.Content("~/public/js/BBoneTrader.utils.js")"> </script>
         <script src="@Url.Content("~/public/js/BBoneTrader.views.js")"> </script>
         <script src="@Url.Content("~/public/js/BBoneTrader.routes.js")"> </script>
         <script src="@Url.Content("~/public/js/AuctionList/BBoneTrader.AuctionList.js")"> </script>
         <script src="@Url.Content("~/public/js/NewAuction/BBoneTrader.NewAuction.js")"> </script>
+        <script src="@Url.Content("~/public/js/NewAuction/BBoneTrader.NewAuction.Models.js")"> </script>
         <script src="@Url.Content("~/public/js/BBoneTrader.Menu.js")"> </script>
     
     </body>

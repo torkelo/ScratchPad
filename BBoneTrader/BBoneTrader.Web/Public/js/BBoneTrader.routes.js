@@ -3,10 +3,10 @@ BBoneTrader.Router = function (Backbone) {
 
     var AppRouter = Backbone.Router.extend({
         routes: {
-            "": "auction",
             "auctions": "auctions",
             "new": "new",
-            "log": "log"
+            "log": "log",
+            "*path": "auctions"
         },
 
         auctions: function () {

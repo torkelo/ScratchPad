@@ -2,7 +2,7 @@
 BBoneTrader = function (Backbone, $) {
 
     var BBoneTrader = {};
-    
+
     var AppView = Backbone.View.extend({
         el: $("#app-view"),
 
@@ -10,11 +10,12 @@ BBoneTrader = function (Backbone, $) {
             _.bindAll(this, "showView");
         },
 
-        showView: function (view) {
-            $(this.el).html(view.render().el);
+        showView: function (view) {            
+            $("#main-region").html(view.render().el);
         }
     });
     
+    BBoneTrader.Commands = {};
     BBoneTrader.Events = _.extend({}, Backbone.Events);
     BBoneTrader.AppView = new AppView();
 
