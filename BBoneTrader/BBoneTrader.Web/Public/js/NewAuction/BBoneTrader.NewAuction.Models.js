@@ -20,7 +20,7 @@ BBoneTrader.Commands.NewAuctionCommand = Backbone.Model.extend({
         };
 
         this.validators.minBid = function (value) {
-            return _.isNumber(value) ? {isValid: true} : {isValid: false, message: "You must enter a number"};
+            return $.isNumeric(value) ? {isValid: true} : {isValid: false, message: "You must enter a number"};
         };
     },
 

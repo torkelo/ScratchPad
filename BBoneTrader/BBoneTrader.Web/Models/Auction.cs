@@ -1,5 +1,6 @@
-﻿namespace BBoneTrader.Web.Models
-{
+﻿using System;
+namespace BBoneTrader.Web.Models
+{    
     public class Auction
     {
         public int Id { get; set; }
@@ -7,5 +8,6 @@
         public string Description { get; set; }
         public int Bids { get; set; }
         public int MaxBid { get; set; }
+        public int MinBid { get; set; }
     }
 }

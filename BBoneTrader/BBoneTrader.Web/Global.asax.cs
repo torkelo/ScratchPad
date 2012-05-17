@@ -8,14 +8,19 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Raven.Client.Document;
+using Raven.Client;
+using Raven.Client.Embedded;
 
 namespace BBoneTrader.Web
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
 
-    public class MvcApplication : System.Web.HttpApplication
+    public class Global : System.Web.HttpApplication
     {
+        public static IDocumentStore DocumentStore;
+
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
@@ -60,6 +65,16 @@ namespace BBoneTrader.Web
 
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.MediaTypeMappings.Add(new QueryStringMapping("json", "1", new MediaTypeHeaderValue("application/json")));
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.MediaTypeMappings.Add(new QueryStringMapping("xml", "1", new MediaTypeHeaderValue("application/xml")));
+
+            Raven.Database.Server.NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
+            DocumentStore = new EmbeddableDocumentStore
+            {  
+                ConnectionStringName = "RavenDB",
+                UseEmbeddedHttpServer = true 
+            };
+
+            DocumentStore.Initialize();
+
         }
     }
 }

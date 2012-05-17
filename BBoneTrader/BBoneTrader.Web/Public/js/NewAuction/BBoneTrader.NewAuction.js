@@ -33,13 +33,18 @@ BBoneTrader.NewAuction = function (Backbone, $) {
             if (check.isValid === false) {                
                 utils.displayValidationErrors(check.messages);
                 return false;
-            }        
+            }
 
-            this.model.save();
+            this.model.save({}, { error: this.saveFailed, success: this.saveSuccess });
+        },
 
+        saveFailed: function(model, resp) {
+            utils.showAlert("Error", "Failed to create auction", "alert-error");
+        },
+
+        saveSuccess: function(model, resp) {
             BBoneTrader.Router.navigate("auctions", true);
-
-            utils.showAlert("Success", "New Auction created!", "alert-success")
+            utils.showAlert("Success", "New Auction created!", "alert-success");            
         }
         
     });

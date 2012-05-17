@@ -1,49 +1,34 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 using BBoneTrader.Web.Models;
+using Raven.Client;
+using System.Threading.Tasks;
+using Raven.Client.Linq;
+using System;
 
 namespace BBoneTrader.Web.Controllers
-{
-    public class AuctionsController : ApiController
-    {
-        public IList<Auction> List()
+{    
+
+    public class AuctionsController : RavenDbApiController
+    {        
+        public IEnumerable<Auction> List()
         {
-            return new List<Auction>()
-                    {
-                        new Auction()
-                            {
-                                Id = 1,
-                                Title = "Old wooden table",
-                                Description = "Buy it",
-                                MaxBid = 100,
-                                Bids = 2,
-                            },
-                            new Auction()
-                            {
-                                Id = 2,
-                                Title = "Old iphone",
-                                Description = "Buy my old iphone",
-                                MaxBid = 200,
-                                Bids = 3
-                            },
-                            new Auction()
-                            {
-                                Id = 3,
-                                Title = "Test auction",
-                                Description = "Do not bid on this!",
-                                MaxBid = 50,
-                                Bids = 0
-                            }
-                    };
+            return Session.Query<Auction>()
+                .Customize(x => x.WaitForNonStaleResults());
         }
 
-        public void Create(CreateAuctionCommand auction)
-        {
-
+        public void Create(NewAuctionCommand command)
+        {            
+            Session.Store(new Auction() 
+            {
+                Title = command.Title,
+                Description = command.Description,
+                MinBid = command.MinBid
+            });
         }
     }
 
-    public class CreateAuctionCommand
+    public class NewAuctionCommand
     {
         public string Title { get; set; }
         public string Description { get; set; }

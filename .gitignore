@@ -38,15 +38,15 @@ _ReSharper*/
 
 #Project files
 [Bb]uild/
+App_Data/
+
+packages/
 
 #Subversion files
 .svn
 
 # Office Temp Files
 ~$*
-
-#NuGet
-packages/
 
 #ncrunch
 *ncrunch*

@@ -1,0 +1,7 @@
+* fix ravendb
+* place bid
+* signalr updates for place bid
+* live log
+* requirejs
+* jasmine tests
+* coffescript
