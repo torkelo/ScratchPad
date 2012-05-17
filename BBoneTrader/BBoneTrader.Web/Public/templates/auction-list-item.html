@@ -1,11 +1,33 @@
  <script id="auction-item-template" type="text/html">
+
+ 	<div class="span8 light-border clickable">
+ 		<hr>
+
+        <div class="media-grid pull-left">
+             <img class="thumbnail" alt="" src="/public/img/medium_default.gif"></a>
+        </div>
+
+        <div class="pull-left span5">
+            <h4>{{Title}}</h4>
+            <p>
+            	{{Description}}
+            </p>
+
+			<span class="label label-info" style="margin-right: 10px;">Bids: {{Bids}}</span>
+			<span class="label label-success">Max bid: {{MaxBid}} SEK</span> 
+
+        </div>       
+        <form class="form-inline pull-right">
+		  <input type="text" id="bid-amount" class="input-small" placeholder="... SEK">
+		  
+		    <button class="btn btn-success place-bid">
+             	<i class="icon-plus-sign icon-white"></i>            	
+            	Place bid
+           	</button> 
+		</form>
+
+    </div>
+
 	
-	<div class="auction-item well">
-	    <header>{{Title}}</header>
-	    
-	    <span class="auction-max-bix">Max bid: {{MaxBid}} SEK</span>
-
-	    <button class="btn primary-btn place-bid">Place bid</button> 
-	</div>
-
+	
 </script>

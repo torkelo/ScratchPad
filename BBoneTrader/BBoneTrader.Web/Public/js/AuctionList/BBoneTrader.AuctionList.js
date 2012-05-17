@@ -25,6 +25,9 @@ BBoneTrader.AuctionList = function (Backbone, $) {
     var AuctionListView = Backbone.View.extend({
         tagName: "div",
         id: "auction-list",
+        events: {
+            "click .place-bid": "placeBid"
+        },
 
         initialize: function () {
 
@@ -45,9 +48,14 @@ BBoneTrader.AuctionList = function (Backbone, $) {
             }, this);
 
             return this;
+        },
+
+        placeBid: function() {
+
         }
     });
 
+  
     // Public api
     var AuctionList = {};
 
