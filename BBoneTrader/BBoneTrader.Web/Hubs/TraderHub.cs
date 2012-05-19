@@ -9,6 +9,5 @@ namespace BBoneTrader.Web.Hubs
         {
             return Groups.Add(Context.ConnectionId, groupName);
         }
-
     }
 }
