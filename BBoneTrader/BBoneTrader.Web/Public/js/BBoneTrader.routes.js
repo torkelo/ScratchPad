@@ -18,7 +18,7 @@ BBoneTrader.Router = function (Backbone) {
         },
 
         log: function () {
-
+            BBoneTrader.Log.show();
         }
     });
 

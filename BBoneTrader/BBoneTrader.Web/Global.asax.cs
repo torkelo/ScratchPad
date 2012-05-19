@@ -57,7 +57,12 @@ namespace BBoneTrader.Web
             RegisterRoutes(RouteTable.Routes);
 
             var templateBundle = new DynamicFolderBundle("html", "*.html", true);
-            var context = new BundleContext(new HttpContextWrapper(Context), new BundleCollection(), "~/Public//templates");
+            var context = new BundleContext(new HttpContextWrapper(Context), new BundleCollection(), "~/Public/templates");
+            templateBundle.EnumerateFiles(context);
+            BundleTable.Bundles.Add(templateBundle);
+
+            var scriptBundle = new DynamicFolderBundle("scripts", "*.js", true);
+            var scriptContext = new BundleContext(new HttpContextWrapper(Context), new BundleCollection(), "~/Public/scripts");
             templateBundle.EnumerateFiles(context);
             BundleTable.Bundles.Add(templateBundle);
 

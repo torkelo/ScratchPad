@@ -51,13 +51,13 @@ BBoneTrader.NewAuction = function (Backbone, $) {
 
 
 	// public api
-    var NewAuction = {};
+    var newAuction = {};
 
-    NewAuction.show = function() {
+    newAuction.show = function() {
     	var view = new NewAuctionView({model: new BBoneTrader.Commands.NewAuctionCommand()});
         BBoneTrader.AppView.showView(view);
     };
 
-    return NewAuction;
+    return newAuction;
 
 }(Backbone, jQuery);
