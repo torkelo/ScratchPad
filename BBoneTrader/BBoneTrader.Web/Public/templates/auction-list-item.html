@@ -1,33 +1,45 @@
  <script id="auction-item-template" type="text/html">
+     
+     <div class="span9">
+         <hr>
 
- 	<div class="span8 light-border clickable">
- 		<hr>
-
-        <div class="media-grid pull-left">
+         <div class="media-grid span1">
              <img class="thumbnail" alt="" src="/public/img/medium_default.gif"></a>
-        </div>
+         </div>        
 
-        <div class="pull-left span5">
-            <h4>{{Title}}</h4>
-            <p>
-            	{{Description}}
-            </p>
+         <div class="span7">
+            <div class="row">
+                <div class="span4">
+                    <h4>{{Title}}</h4>
+                    <p>
+                        {{Description}}
+                    </p>
+                </div>
+                <div class="span3">
+                    <form class="form-inline">
+                        <input type="text" class="input-small bid-amount" placeholder="... SEK">
+                      
+                        <button class="btn btn-success place-bid" type="button">
+                            <i class="icon-plus-sign icon-white"></i>               
+                            Place bid
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span7">
+                    <span class="label label-info">Bids: {{Bids}}</span>
+                    <span class="label label-success">Highest bid: {{HighestBid}} SEK</span> 
+                    <span class="label">Min bid: {{MinBid}} SEK</span>    
 
-			<span class="label label-info" style="margin-right: 10px;">Bids: {{Bids}}</span>
-			<span class="label label-success">Max bid: {{MaxBid}} SEK</span> 
+                    {{#NewBid}}
+                        <span class="label label-warning">New Bid</span>                                
+                    {{/NewBid}}
+                </div>
+            </div>
+        
+        
+     </div>
 
-        </div>       
-        <form class="form-inline pull-right">
-		  <input type="text" id="bid-amount" class="input-small" placeholder="... SEK">
-		  
-		    <button class="btn btn-success place-bid">
-             	<i class="icon-plus-sign icon-white"></i>            	
-            	Place bid
-           	</button> 
-		</form>
-
-    </div>
-
-	
 	
 </script>

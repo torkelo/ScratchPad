@@ -1,37 +1,78 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
+using BBoneTrader.Web.Hubs;
 using BBoneTrader.Web.Models;
-using Raven.Client;
-using System.Threading.Tasks;
-using Raven.Client.Linq;
-using System;
 
 namespace BBoneTrader.Web.Controllers
 {    
 
-    public class AuctionsController : RavenDbApiController
-    {        
+    public class AuctionsController : ApiController
+    {
+        public static IList<Auction> _auctions = new List<Auction>()
+                                                     {
+                                                         new Auction()
+                                                             {
+                                                                 Id = 1,
+                                                                 Title = "Game of thrones ultra delux signed edition",
+                                                                 Description = "Signed by George R.R. Martin",
+                                                                 MinBid = 10
+                                                             },
+                                                         new Auction()
+                                                             {
+                                                                 Id = 2,
+                                                                 Title = "Old laptop that crashes all the time",
+                                                                 Description = "But it can boot",
+                                                                 Bids = 112,
+                                                                 HighestBid = 700,
+                                                             },
+                                                         new Auction()
+                                                             {
+                                                                 Id = 3,
+                                                                 Title = "The Mona Lisa",
+                                                                 Description = "It is not replica, I promise!",
+                                                                 Bids = 0,
+                                                                 MinBid = 1500000
+                                                             }
+                                                     };
+
         public IEnumerable<Auction> List()
         {
-            return Session.Query<Auction>()
-                .Customize(x => x.WaitForNonStaleResults());
+            return _auctions;
         }
 
         public void Create(NewAuctionCommand command)
-        {            
-            Session.Store(new Auction() 
+        {
+            _auctions.Insert(0, new Auction() 
             {
+                Id = _auctions.Count + 1,
                 Title = command.Title,
                 Description = command.Description,
                 MinBid = command.MinBid
             });
         }
-    }
 
-    public class NewAuctionCommand
-    {
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public int MinBid { get; set; }
+        public void PlaceBid(PlaceBidCommand bidCommand)
+        {
+            var auction = _auctions.SingleOrDefault(x => x.Id == bidCommand.AuctionId);
+            if (auction == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+
+            if (bidCommand.Amount > auction.HighestBid && bidCommand.Amount > auction.MinBid)
+            {
+                auction.Bids += 1;
+                auction.HighestBid = bidCommand.Amount;
+
+                TraderHubUtil.BroadcastBidPlacedFor(auction);
+            }
+            else
+            {
+                throw new HttpResponseException("Bid amount to low", HttpStatusCode.ExpectationFailed);
+            }
+        }
     }
 }

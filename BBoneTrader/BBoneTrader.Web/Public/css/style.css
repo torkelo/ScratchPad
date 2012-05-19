@@ -10,3 +10,7 @@ body {
 .auction-item, .new-auction-form {
     
 }
+
+p {
+    margin: 0 0 5px;
+}

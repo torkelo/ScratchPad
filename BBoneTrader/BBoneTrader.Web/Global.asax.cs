@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Formatting;
+﻿using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Raven.Client.Document;
-using Raven.Client;
-using Raven.Client.Embedded;
+
 
 namespace BBoneTrader.Web
 {
@@ -19,8 +14,6 @@ namespace BBoneTrader.Web
 
     public class Global : System.Web.HttpApplication
     {
-        public static IDocumentStore DocumentStore;
-
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
@@ -70,15 +63,6 @@ namespace BBoneTrader.Web
 
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.MediaTypeMappings.Add(new QueryStringMapping("json", "1", new MediaTypeHeaderValue("application/json")));
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.MediaTypeMappings.Add(new QueryStringMapping("xml", "1", new MediaTypeHeaderValue("application/xml")));
-
-            Raven.Database.Server.NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
-            DocumentStore = new EmbeddableDocumentStore
-            {  
-                ConnectionStringName = "RavenDB",
-                UseEmbeddedHttpServer = true 
-            };
-
-            DocumentStore.Initialize();
 
         }
     }

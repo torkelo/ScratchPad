@@ -48,6 +48,10 @@ window.utils = {
 
     hideAlert: function() {
         $('.alert').hide();
+    },
+
+    highlight: function(el) {
+        $(el).effect("highlight", {}, 4000);
     }
 
 };
