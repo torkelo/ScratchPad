@@ -1,4 +1,5 @@
-﻿using BBoneTrader.Web.Models;
+﻿using BBoneTrader.Web.Logging;
+using BBoneTrader.Web.Models;
 using SignalR;
 
 namespace BBoneTrader.Web.Hubs
@@ -12,11 +13,18 @@ namespace BBoneTrader.Web.Hubs
              hub.Clients.bidPlaced(new { auction.Id, auction.HighestBid, auction.Bids, NewBid = true });
          }
 
-        public static void BroadcastNewAuction(object auction)
+        public static void BroadcastNewAuction(Auction auction)
         {
             var clientManager = GlobalHost.DependencyResolver.Resolve<IConnectionManager>();
             var hub = clientManager.GetHubContext<TraderHub>();
             hub.Clients.newAuction(auction);
+        }
+
+        public static void BroadcastLogMessage(LogMessage logMessage)
+        {
+            var clientManager = GlobalHost.DependencyResolver.Resolve<IConnectionManager>();
+            var hub = clientManager.GetHubContext<TraderHub>();
+            hub.Clients["log"].newLogMessage(new LogMessageViewModel(logMessage));
         }
     }
 }
