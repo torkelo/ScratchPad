@@ -10,8 +10,16 @@ BBoneTrader = function (Backbone, $) {
             _.bindAll(this, "showView");
         },
 
-        showView: function (view) {            
-            $("#main-region").html(view.render().el);
+        showView: function (view) {
+            
+            if (this.currentView){
+                this.currentView.close();
+            }
+
+            this.currentView = view;
+            this.currentView.render();
+
+            $("#main-region").html(this.currentView.el);
         }
     });
     

@@ -45,13 +45,17 @@ namespace BBoneTrader.Web.Controllers
 
         public void Create(NewAuctionCommand command)
         {
-            _auctions.Insert(0, new Auction() 
-            {
-                Id = _auctions.Count + 1,
-                Title = command.Title,
-                Description = command.Description,
-                MinBid = command.MinBid
-            });
+            var newAuction = new Auction()
+                                 {
+                                     Id = _auctions.Count + 1,
+                                     Title = command.Title,
+                                     Description = command.Description,
+                                     MinBid = command.MinBid
+                                 };
+
+            _auctions.Add(newAuction);
+
+            TraderHubUtil.BroadcastNewAuction(newAuction);
         }
 
         public void PlaceBid(PlaceBidCommand bidCommand)

@@ -25,14 +25,16 @@ BBoneTrader.AuctionList = function (Backbone, $) {
         },
 
         initialize: function() {
-            this.model.on("change", this.render, this);            
+            this.model.on("change", this.render, this);                        
         },
 
         render: function() {
+            console.log("item render");
+
             BBoneTrader.View.prototype.render.call(this);
             
             if (this.model.get("NewBid")) {
-                utils.highlight(this.el);
+                utils.highlight(this.el);                
             }
 
             return this;
@@ -47,16 +49,15 @@ BBoneTrader.AuctionList = function (Backbone, $) {
             command.on("error", this.bidPlacedFailed, this);
             command.on("sync", this.bidPlacedSuccess, this);
 
-            command.save();
-        },
+            command.save({}, {
+                error: function() { utils.showAlert("Error", "Failed to place bid", "alert-error"); },
+                success: function() { utils.showAlert("Success", "Bid placed!", "alert-success"); }
+            });
+        },        
 
-        bidPlacedFailed: function() {
-            utils.showAlert("Error", "Failed to place bid", "alert-error");            
-        },
-
-        bidPlacedSuccess: function() {
-            utils.showAlert("Success", "Bid placed!", "alert-success");
-        },
+        onClose: function() {
+            this.model.off("change", this.render);
+        }
 
     });
 
@@ -67,40 +68,67 @@ BBoneTrader.AuctionList = function (Backbone, $) {
         
         initialize: function () {
 
-            this.collection.on("reset", this.render, this);
+            this.collection.on("add", this.auctionAdded, this);
 
+            this.childViews = [];
         },
 
         render: function () {
+            console.log("auction list render");
+
             $(this.el).html("<h3>Auction List</h3>");
 
-            this.collection.forEach(function (item) {
-
-                var itemView = new AuctionListItemView({ model: item });
-                $(this.el).append(itemView.render().el);
-
-            }, this);
+            this.collection.forEach(this.renderItemView, this);
 
             return this;
+        },
+
+        renderItemView: function(item) {
+            var itemView = new AuctionListItemView({ model: item });
+            $(this.el).append(itemView.render().el);
+
+            this.childViews.push(itemView);
+
+            return itemView;
+        },
+
+        auctionAdded: function(item) {
+            console.log("new auction detected!");
+            var itemElement = this.renderItemView(item).el;            
+            utils.highlight(itemElement);
+        },
+
+        onClose: function() {            
+            this.collection.off("add", this.auctionAdded);
+
+            _(this.childViews).forEach(function(itemView) {
+                itemView.close();
+            });
         }
         
     });
 
+    // start loading auctions directly
     var auctionList = new AuctionListCollection();
-    auctionList.fetch();
+    var auctionListPromise = auctionList.fetch();
 
     // Events
-    BBoneTrader.Events.on("auction:bidPlaced", function(data) {
-        console.log("new bid detected! updating auction " + data.Id);
-
+    BBoneTrader.Events.on("serverEvent:bidPlaced", function(data) {
         var auction = auctionList.get(data.Id);
         auction.set(data);
     });
 
+    BBoneTrader.Events.on("serverEvent:newAuction", function(data) {
+        var listItem = new AuctionListItem(data);
+        auctionList.add(listItem);
+    });
+
     // Public api    
     AuctionList.show = function () {
-        var auctionListView = new AuctionListView({collection: auctionList});
-        BBoneTrader.AppView.showView(auctionListView);
+        auctionListPromise.done(function() {            
+            var auctionListView = new AuctionListView({collection: auctionList});        
+            BBoneTrader.AppView.showView(auctionListView);
+        });        
     };
 
     return AuctionList;

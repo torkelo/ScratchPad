@@ -42,9 +42,9 @@ BBoneTrader.NewAuction = function (Backbone, $) {
             utils.showAlert("Error", "Failed to create auction", "alert-error");
         },
 
-        saveSuccess: function(model, resp) {
-            BBoneTrader.Router.navigate("auctions", true);
+        saveSuccess: function(model, resp) {            
             utils.showAlert("Success", "New Auction created!", "alert-success");            
+            BBoneTrader.Router.navigate("auctions", true);
         }
         
     });

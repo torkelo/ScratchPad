@@ -1,4 +1,14 @@
 ﻿
+Backbone.View.prototype.close = function(){
+  this.remove();
+  this.unbind();
+
+  if (this.onClose){
+    this.onClose();
+  }
+  
+};
+
 BBoneTrader.View = Backbone.View.extend({
 
         render: function () {

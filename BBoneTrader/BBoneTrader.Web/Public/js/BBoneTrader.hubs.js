@@ -3,9 +3,11 @@ BBoneTrader.Hubs = function(Backbone, $) {
 	var traderHub = $.connection.traderHub;
 
 	traderHub.bidPlaced = function(data) {
-		BBoneTrader.Events.trigger("auction:bidPlaced", data);
+		BBoneTrader.Events.trigger("serverEvent:bidPlaced", data);
+	};
 
-		console.log("auction:bidPlaced triggered");
+	traderHub.newAuction = function(data) {
+		BBoneTrader.Events.trigger("serverEvent:newAuction", data);
 	};
 
 	$.connection.hub.start();
