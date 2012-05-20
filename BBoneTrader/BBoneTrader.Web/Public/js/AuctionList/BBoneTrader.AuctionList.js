@@ -1,7 +1,5 @@
 ﻿
-BBoneTrader.AuctionList = function (Backbone, $) {
-    
-    var AuctionList = {};
+BBoneTrader.AuctionList = function (Backbone, $) {      
 
     var PlaceBidCommand = Backbone.Model.extend({
         url: "api/auctions/placeBid"
@@ -28,8 +26,7 @@ BBoneTrader.AuctionList = function (Backbone, $) {
             this.model.on("change", this.render, this);                        
         },
 
-        render: function() {
-            console.log("item render");
+        render: function() {           
 
             BBoneTrader.View.prototype.render.call(this);
             
@@ -44,10 +41,7 @@ BBoneTrader.AuctionList = function (Backbone, $) {
             var command = new PlaceBidCommand({
                 auctionId: this.model.get("Id"),
                 amount: $(".bid-amount", this.el).val()
-            });
-
-            command.on("error", this.bidPlacedFailed, this);
-            command.on("sync", this.bidPlacedSuccess, this);
+            });            
 
             command.save({}, {
                 error: function() { utils.showAlert("Error", "Failed to place bid", "alert-error"); },
@@ -124,6 +118,8 @@ BBoneTrader.AuctionList = function (Backbone, $) {
     });
 
     // Public api    
+    var AuctionList = {};    
+    
     AuctionList.show = function () {
         auctionListPromise.done(function() {            
             var auctionListView = new AuctionListView({collection: auctionList});        

@@ -30,7 +30,9 @@
                 <div class="span7">
                     <span class="label label-info">Bids: {{Bids}}</span>
                     <span class="label label-success">Highest bid: {{HighestBid}} SEK</span> 
-                    <span class="label">Min bid: {{MinBid}} SEK</span>    
+                    {{^HasBids}}                    
+                        <span class="label">Min bid: {{MinBid}} SEK</span>    
+                    {{/HasBids}}
 
                     {{#NewBid}}
                         <span class="label label-warning">New Bid</span>                                

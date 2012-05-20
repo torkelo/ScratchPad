@@ -9,5 +9,7 @@ namespace BBoneTrader.Web.Models
         public int Bids { get; set; }
         public int HighestBid { get; set; }
         public int MinBid { get; set; }
+
+        public bool HasBids { get { return Bids > 0; } set {} }
     }
 }

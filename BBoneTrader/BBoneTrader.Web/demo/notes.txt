@@ -5,3 +5,19 @@
 * requirejs
 * jasmine tests
 * coffescript
+
+
+-- plan
+* intro powerpoint
+* Models
+* Collection
+* MainView
+* ItemView
+* Move render to base view
+
+* router 
+
+* turn on full app
+
+* signalr
+
