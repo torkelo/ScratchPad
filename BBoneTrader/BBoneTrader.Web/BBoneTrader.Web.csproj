@@ -237,7 +237,8 @@
     <Content Include="Public\js\vendor\underscore.min.js" />
     <Content Include="Public\templates\auction-list-item.html" />
     <Content Include="Public\js\vendor\jquery.signalR-0.5.0.js" />
-    <Content Include="Public\templates\log-view-template.html" />
+    <Content Include="Public\templates\log-item-template.html" />
+    <Content Include="Public\templates\log-template.html" />
     <Content Include="Public\templates\new-auction.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
