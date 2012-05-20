@@ -40,7 +40,6 @@ _ReSharper*/
 [Bb]uild/
 App_Data/
 
-packages/
 
 #Subversion files
 .svn
