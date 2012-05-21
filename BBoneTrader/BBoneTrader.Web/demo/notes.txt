@@ -21,8 +21,11 @@
 
 * turn on full app
 * structure, 
-* 
-
 
 * signalr
+* write log 
+* look at place bid / new bid signalr 
+* zombies
+
+
 
