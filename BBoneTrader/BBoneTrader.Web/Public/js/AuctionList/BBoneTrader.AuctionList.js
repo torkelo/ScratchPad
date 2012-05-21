@@ -67,8 +67,7 @@ BBoneTrader.AuctionList = function (Backbone, $) {
             this.childViews = [];
         },
 
-        render: function () {
-            console.log("auction list render");
+        render: function () {           
 
             $(this.el).html("<h3>Auction List</h3>");
 
@@ -86,8 +85,7 @@ BBoneTrader.AuctionList = function (Backbone, $) {
             return itemView;
         },
 
-        auctionAdded: function(item) {
-            console.log("new auction detected!");
+        auctionAdded: function(item) {            
             var itemElement = this.renderItemView(item).el;            
             utils.highlight(itemElement);
         },

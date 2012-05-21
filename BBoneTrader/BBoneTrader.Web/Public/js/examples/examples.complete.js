@@ -2,30 +2,29 @@
 //
 // Models 
 // 
-var AuctionItem = Backbone.Model.extend({
-	url: "api/auctions/1"
+var Auction = Backbone.Model.extend({
+	url: "api/auctions"
 
 	defaults: {
+		title: "generic title",
 		description: "generic description"
 	},
 
-	initialize: function(){
+	initialize: function() {
 		// init code
 	},
 
 	placeBid: function() {
-		// do something interesting
-
-		this.trigger("bidPlaced", {newBid: 113});
+		// do something interesting		
 	}
 
 });
 
-var item = new AuctionItem();
+var item = new Auction({ title: "some title", description: "some description" });
+
+title.set({title: "new title"});
 
 var title = item.get("title");
-
-title.set({title: "new title"})
 
 item.on("change", function({
 	// something changed!
@@ -37,33 +36,21 @@ item.on("change:title", function({
 
 item.placeBid();
 
-// 
-// Events 
-// 
-var app = {};
-_.extend(app, Backbone.Events);
-
-app.on("some-event", function() {
-
-});
-
-app.trigger("some-event");
 
 //
 // Main view
 // 
 
-<div class="mydiv">
-    some text
-</div>
-
-<input type="text" class="mytext small-input" />
+<form class="well form-search">
+  <input type="text" class="input-medium search-query">
+  <button type="submit" class="btn">Search</button>
+</form>
 
 var MainView = Backbone.View.extend({
 	el: $("#app-view"),
 	events: {		
-		"click .mydiv": "clicked",
-		"change .mytext": "textChanged"  
+		"click .btn": "clicked",
+		"change .input-medium": "textChanged"  
 	},
 
 	initialize: function(options){
@@ -86,10 +73,10 @@ var view = new MainView();
 // Collection fetch & render
 //
 
-var AuctionItem = Backbone.Model.extend({});
+var Auction = Backbone.Model.extend({});
 
 var AuctionCollection = Backbone.Collection.extend({	
-	model: AuctionItem,
+	model: Auction,
 	url: "api/auctions/list",
 })
 

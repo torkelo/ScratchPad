@@ -1,56 +1,28 @@
+// 
 
+var AppRouter = Backbone.Router.extend({
 
-var AuctionItem = Backbone.Model.extend({
-});
+	routes: {
+            "auctions": "auctions",
+            "new": "new",
+            "log": "log",
+            "*path": "auctions"
+    },
 
-var AuctionItemCollection = Backbone.Collection.extend({
-	url: "api/auctions/list",
-	model: AuctionItem
-})
+    auctions: function () {
+      	$("#main-region").html("<h2>Auction list</h2>");
+    },
 
-var AuctionItemView = Backbone.View.extend({
+    new: function () {            
+      	$("#main-region").html("<h2>new Auction</h2>");
+    },
 
-	events: {
-		"click .place-bid": "placeBid"
-	},
-	
-	render: function() {
-		var template = $("#auction-item-template").text();
-		
-		var html = Mustache.to_html(template, this.model.toJSON());
-        $(this.el).html(html);
-
-        return this;
-	},
-
-	placeBid: function() {
-		this.model.set({Bids: 1});
-	}
+    log: function () {
+        $("#main-region").html("<h2>Log page</h2>");
+    }
 
 });
 
-var MainView = Backbone.View.extend({
-	el: $("#app-view"),
-	
-	initialize: function(){
+var router = new AppRouter();
 
-		this.collection = new AuctionItemCollection();
-		this.collection.on("reset", this.render, this);
-
-		this.collection.fetch();	
-	},
-
-	render: function() {
-
-		this.collection.forEach(function(item) {
-
-			var itemView = new AuctionItemView({model: item});			
-			$("#main-region").append(itemView.render().el);
-
-		});
-	}	
-});
-
-var view = new MainView();
-
-
+Backbone.history.start();
