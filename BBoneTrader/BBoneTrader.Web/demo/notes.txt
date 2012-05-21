@@ -11,6 +11,8 @@
 * intro powerpoint
 * Models
 * Collection
+* Events
+
 * MainView
 * ItemView
 * Move render to base view

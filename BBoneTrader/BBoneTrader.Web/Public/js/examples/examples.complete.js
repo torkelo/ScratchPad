@@ -37,6 +37,17 @@ item.on("change:title", function({
 
 item.placeBid();
 
+// 
+// Events 
+// 
+var app = {};
+_.extend(app, Backbone.Events);
+
+app.on("some-event", function() {
+
+});
+
+app.trigger("some-event");
 
 //
 // Main view
