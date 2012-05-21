@@ -21,7 +21,7 @@ BBoneTrader.Hub = function(Backbone, $) {
 	hub.joinGroup = function(name) {
 		hubStart.done(function() {
 			traderHub.joinGroup(name);	
-		})		
+		});		
 	};
 
 	hub.leaveGroup = function(name) {

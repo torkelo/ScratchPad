@@ -14,10 +14,15 @@
 * MainView
 * ItemView
 * Move render to base view
+* place bid, update model, listen on change
+* place bid using command
 
 * router 
 
 * turn on full app
+* structure, 
+* 
+
 
 * signalr
 

@@ -14,11 +14,7 @@ BBoneTrader.Commands.NewAuctionCommand = Backbone.Model.extend({
         this.validators.title = function (value) {
             return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a title"};
         };
-
-        this.validators.description = function (value) {
-            return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a description"};
-        };
-
+        
         this.validators.minBid = function (value) {
             return $.isNumeric(value) ? {isValid: true} : {isValid: false, message: "You must enter a number"};
         };
