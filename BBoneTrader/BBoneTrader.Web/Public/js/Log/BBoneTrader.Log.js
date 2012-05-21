@@ -1,6 +1,53 @@
 
 BBoneTrader.Log = function (Backbone, $) {
+   
+	
+    var LogView = BBoneTrader.View.extend({
+        template: "#log-template",
 
+        initialize: function() {
+           
+        },     
+
+    });
+
+	// public api
+    var log = {};
+
+    log.show = function() {
+    	var view = new LogView({collection: logItems});
+        
+        BBoneTrader.AppView.showView(view);
+        //BBoneTrader.Hub.joinGroup("log");
+    };
+
+    return log;
+
+}(Backbone, jQuery);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
     var LogItem = Backbone.Model.extend({});
     var LogItemCollection = Backbone.Collection.extend({
         model: LogItem
@@ -10,7 +57,7 @@ BBoneTrader.Log = function (Backbone, $) {
         template: "#log-item-template",
         tagName: "tr"
     });
-	
+    
     var LogView = BBoneTrader.View.extend({
         template: "#log-template",
 
@@ -32,16 +79,15 @@ BBoneTrader.Log = function (Backbone, $) {
         logItems.add(new LogItem(data));
     });
 
-	// public api
+    // public api
     var log = {};
 
     log.show = function() {
-    	var view = new LogView({collection: logItems});
+        var view = new LogView({collection: logItems});
         
         BBoneTrader.AppView.showView(view);
         BBoneTrader.Hub.joinGroup("log");
     };
 
     return log;
-
-}(Backbone, jQuery);
+*/
