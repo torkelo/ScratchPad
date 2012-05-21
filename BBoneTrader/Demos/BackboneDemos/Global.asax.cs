@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using BackboneDemos.Controllers;
+using SignalR;
 
 namespace BackboneDemos
 {
@@ -35,6 +38,15 @@ namespace BackboneDemos
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            var _timer = new Timer(TimerTick, null, 0, 3000);
+        }
+
+        private void TimerTick(object state)
+        {
+            var clientManager = GlobalHost.DependencyResolver.Resolve<IConnectionManager>();
+            var hub = clientManager.GetHubContext<DevSumHub>();
+            hub.Clients.serverTick("Server timer tick: "+ DateTime.Now);
         }
     }
 }

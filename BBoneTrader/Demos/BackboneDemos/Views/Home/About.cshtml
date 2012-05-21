@@ -4,5 +4,27 @@
 
 <h2>About</h2>
 <p>
-     Put content here.
+    Put content here.
 </p>
+
+<ul id="list">
+    
+</ul>
+
+
+<script>
+
+    $(function () {
+
+        var hub = $.connection.devSumHub;
+
+        hub.serverTick = function (data) {
+            $("#list").append("<li>" + data + "</li>");
+        };
+
+        $.connection.hub.start();
+
+    });
+
+    
+</script>
