@@ -148,6 +148,19 @@ var AppViewBase = Backbone.View.extend({
 
 });
 
+// Model save
+placeBid: function() {
+    var command = new PlaceBidCommand({
+        auctionId: this.model.get("Id"),
+        amount: $(".bid-amount", this.el).val()
+    });            
+
+    command.save({}, {
+        error: function() { utils.showAlert("Error", "Failed to place bid", "alert-error"); },
+        success: function() { utils.showAlert("Success", "Bid placed!", "alert-success"); }
+    });
+},
+
 
 //
 // Router
