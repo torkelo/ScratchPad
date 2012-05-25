@@ -58,7 +58,27 @@
 
             </div>     
             
-        </div>    
+        </div>
+
+        <div class="agent-log-wrapper">      
+          <div class="agent-log well">
+            <div class="agent-log-item">
+              <span style="color: rgb(106, 253, 81)">(</span><span style="color: rgb(162, 196, 253)">10:31:20</span><span style="color: rgb(106, 253, 81)">)</span>
+              <span style="color: rgb(253, 248, 185)">&lt;</span><span style="color: rgb(252, 181, 129)">duffman</span><span style="color: rgb(253, 248, 185)">&gt;</span>
+              <span style="color: rgb(106, 253, 81)">[</span><span style="color: rgb(162, 196, 253)">info</span><span style="color: rgb(106, 253, 81)">]</span>
+              <span class="logger">DeploySiteTask</span>
+              <span class="message">Shutting down site...</span>
+            </div>
+          </div>
+        </div>
+
+        <script id="agent-log-item-template" type="text/html">
+              <span style="color: rgb(106, 253, 81)">(</span><span style="color: rgb(162, 196, 253)">{{time}}</span><span style="color: rgb(106, 253, 81)">)</span>
+              <span style="color: rgb(253, 248, 185)">&lt;</span><span style="color: rgb(252, 181, 129)">{{agentName}}</span><span style="color: rgb(253, 248, 185)">&gt;</span>
+              <span style="color: rgb(106, 253, 81)">[</span><span style="color: rgb(162, 196, 253)">{{level}}</span><span style="color: rgb(106, 253, 81)">]</span>
+              <span class="logger">{{logger}}</span>
+              <span class="message">{{message}}</span>
+        </script>
        
         
         @Html.RenderTemplates("~/public/templates/html")
@@ -85,6 +105,7 @@
         <script src="@Url.Content("~/public/js/NewAuction/BBoneTrader.NewAuction.Models.js")"> </script>
         <script src="@Url.Content("~/public/js/Log/BBoneTrader.Log.js")"> </script>
         <script src="@Url.Content("~/public/js/BBoneTrader.Menu.js")"> </script>
+        <script src="@Url.Content("~/public/js/BBoneTrader.AgentLog.js")"> </script>
         
         
      @*   <script src="@Url.Content("~/public/js/examples/examples.js")"> </script>*@

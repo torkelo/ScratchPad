@@ -14,3 +14,34 @@ body {
 p {
     margin: 0 0 5px;
 }
+
+ .agent-log-wrapper {
+ 	position: fixed; 	 	
+ 	width: 100%;
+ 	bottom: 0px;
+ 	background: #2F2F2F; 	
+ 	color: #C6C6C6; 	
+ 	margin: 0px; 	
+ }
+
+ .agent-log {
+ 	margin: 4px 2px 4px 2px; 	 	
+ 	min-height: 98px; 	
+ 	max-height: 478px;
+ 	height: 98px;
+ 	padding: 5px;
+ 	-moz-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
+  	-webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
+  	-o-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
+  	box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
+  	background: #202020;
+  	background-color: rgba(0, 0, 0, 0.3);
+  	overflow: auto;
+ }
+
+ .agent-log .time {
+ 	color: #FF00B6;
+ }
+ .agent-log .time {
+ 	color: #FF00B6;
+ }
