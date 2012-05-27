@@ -39,9 +39,80 @@ p {
   	overflow: auto;
  }
 
- .agent-log .time {
- 	color: #FF00B6;
- }
- .agent-log .time {
- 	color: #FF00B6;
- }
+.widget {
+	position: relative;
+	clear: both;
+	width: auto;
+	margin-bottom: 2em;
+	overflow: hidden;
+}
+
+.widget-header {
+	position: relative;
+	height: 30px;
+	line-height: 30px;
+	background: #E9E9E9;
+	background: -moz-linear-gradient(top, #FAFAFA 0%, #E9E9E9 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FAFAFA), color-stop(100%,#E9E9E9));
+	background: -webkit-linear-gradient(top, #FAFAFA 0%,#E9E9E9 100%);
+	background: -o-linear-gradient(top, #FAFAFA 0%,#E9E9E9 100%);
+	background: -ms-linear-gradient(top, #FAFAFA 0%,#E9E9E9 100%);
+	background: linear-gradient(top, #FAFAFA 0%,#E9E9E9 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#E9E9E9');
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#E9E9E9')";
+	border: 1px solid #D5D5D5;
+	-webkit-border-top-left-radius: 4px;
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright: 4px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	-webkit-background-clip: padding-box;
+}
+
+.widget-header h3 {
+    color: #555555;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    left: 10px;
+    line-height: 14px;
+    margin-right: 3em;
+    position: relative;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+    
+}
+
+.widget-content:after {
+    clear: both;
+}
+
+.widget-content:before, .widget-content:after {
+    content: "";
+    display: table;
+}
+
+.widget-content:before, .widget-content:after {
+    content: "";
+    display: table;
+}
+
+.widget-box .widget-content {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+
+.widget-header + .widget-content {
+    border-top: medium none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.widget-content {
+}
+
+.widget-content {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #D5D5D5;
+    border-radius: 5px 5px 5px 5px;
+    padding: 20px 15px 15px;
+}
